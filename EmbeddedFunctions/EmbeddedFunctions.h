@@ -17,9 +17,7 @@ ref class EmbeddedFunctions {
 public:
 	// TODO: complete this function.
 	EmbeddedFunctions() {
-		// This is a test line
-		Console::Writeline("Hello World");
-		return 0;
+
 	}
 	// TODO: complete this function.
 	~EmbeddedFunctions() {
