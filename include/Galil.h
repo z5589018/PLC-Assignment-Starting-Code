@@ -18,32 +18,38 @@ terminated by a semicolon ';'.
 #include "EmbeddedFunctions.h"
 #include <iostream>
 #include <stdint.h>
-
+using namespace System;
 #include <string>
+#include <vector>
 
 class Galil {
 public:
 	// TODO: complete this function.
-	Galil();												// Default constructor. Initialize variables, open Galil connection and allocate memory.
+	Galil(); 												// Default constructor. Initialize variables, open Galil connection and allocate memory.
 															// Should assign a default embedded functions that works with physical hardware and a 
 															// default Galil address as described in the assignment spec.
 	// TODO: complete this function.
-	Galil(EmbeddedFunctions* Funcs, GCStringIn address);	// Constructor with EmbeddedFunciton pre-initialised and passed in.
+	Galil(EmbeddedFunctions* Funcs, GCStringIn address);	// Constructor with EmbeddedFunciton pre-initialised and passed in
+
 	// TODO: complete this function.
-	Galil(const Galil& other);								// Copy constructor to copy the state of all elements within the object other.
+	Galil(const Galil& other); 								// Copy constructor to copy the state of all elements within the object other.
 															// It should construct a new EmbeddedFunctions object and open a separate connection
 															// (i.e., each class will have a unique value of the GCon g). All other data members
 															// should be transferred.
+
+
 	Galil(Galil&& other) = delete;							// Move constructor deleted and should not be implemented.
 	// TODO: complete this function.
-	~Galil();												// Default destructor. Deallocate memory and close Galil connection.
+	~Galil();
+												// Default destructor. Deallocate memory and close Galil connection.
 
 	// DIGITAL OUTPUTS
 	// TODO: complete this function.
 	void DigitalOutput(uint16_t value);						// Write to all 16 bits of digital output, 1 command to the Galil
+		
 	// TODO: complete this function.
-	void DigitalByteOutput(bool bank, uint8_t value);		// Write to one byte, either high or low byte, as specified by user in 'bank'
-															// 0 = low, 1 = high
+	void DigitalByteOutput(bool bank, uint8_t value);		// Write to one byte, either high or low byte, as specified by user in 'bank' 0 = low, 1 = high
+
 	// TODO: complete this function.
 	void DigitalBitOutput(bool val, uint8_t bit);			// Write single bit to digital outputs. 'bit' specifies which bit
 
@@ -51,16 +57,17 @@ public:
 	// DIGITAL INPUTS
 	// TODO: complete this function.
 	uint16_t DigitalInput();								// Return the 16 bits of input data
-															// Query the digital inputs of the GALIL, See Galil command library @IN
+		// Query the digital inputs of the GALIL, See Galil command library @IN
+
 	// TODO: complete this function.
-	uint8_t DigitalByteInput(bool bank);					// Read either high or low byte, as specified by user in 'bank'
+	uint8_t DigitalByteInput(bool bank);						// Read either high or low byte, as specified by user in 'bank'
 															// 0 = low, 1 = high
 															// A bank is one byte (8 bits). The low bank (0) is the first 8
 															// bits (DI0-DI7) and the high bank (1) is the upper 8 bits
 															// (DI8-DI15).
 	// TODO: complete this function.
-	bool DigitalBitInput(uint8_t bit);						// Read single bit from current digital inputs. Above functions
-															// may use this function
+	bool DigitalBitInput(uint8_t bit);						// Read single bit from current digital inputs. Above functions may use this function
+		
 
 	// TODO: complete this function.
 	bool CheckSuccessfulWrite();							// Check the string response from the Galil to check that the last
@@ -134,4 +141,6 @@ protected:
 	int setPoint;					// Control Setpoint
 
 	// TODO: Add any new data members or functions BELOW (DO NOT ADD THEM ABOVE THIS LINE)
+	bool check;
+
 };

@@ -16,15 +16,9 @@ using namespace System::Net::Sockets;
 ref class EmbeddedFunctions {
 public:
 	// TODO: complete this function.
-	EmbeddedFunctions() {
-		// This is a test line
-		Console::WriteLine("Hello World");
-		return 0;
-	}
+	EmbeddedFunctions();
 	// TODO: complete this function.
-	~EmbeddedFunctions() {
-		
-	}
+	~EmbeddedFunctions();
 
 	/**
 	* Open a connection to a Galil Controller.
@@ -62,4 +56,6 @@ public:
 
 private:
 	// Add any additional member variables and functions as required
+	TcpClient^ GalilMngHndl;
+	NetworkStream^ GalilStream;
 };
